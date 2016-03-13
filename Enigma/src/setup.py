@@ -30,5 +30,9 @@ setup(
                           "custom_boot_script": '',
                          }
               },
+
+    # using zipfile to reduce number of files in dist
+    zipfile = r'lib\library.zip',
+    
     windows=['Enigma.py']
 )
