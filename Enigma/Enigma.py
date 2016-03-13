@@ -315,7 +315,6 @@ class Window(wx.Frame):
                             
     def backSpace(self, event):
         textLen = len(self.textIn.GetValue())
-        print textLen
         event.Skip()
         if textLen > 0:
             lastChar = self.textIn.GetValue()[-1]
@@ -480,6 +479,7 @@ class Window(wx.Frame):
 ################################################################################
     
     def resetCursor(self, event):
+        self.textIn.SetFocus()
         self.textIn.SetInsertionPointEnd()
         
 ################################################################################
