@@ -1,6 +1,6 @@
 eclipse.preferences.version=1
-encoding//Encryption/Connections.py=utf-8
-encoding//Encryption/Encryptor.py=utf-8
-encoding//dlgs/ReflectorSelection.py=utf-8
-encoding//dlgs/RotorSelection.py=utf-8
-encoding/Enigma.py=utf-8
+encoding//src/Encryption/Connections.py=utf-8
+encoding//src/Encryption/Encryptor.py=utf-8
+encoding//src/Enigma.py=utf-8
+encoding//src/dlgs/ReflectorSelection.py=utf-8
+encoding//src/dlgs/RotorSelection.py=utf-8
