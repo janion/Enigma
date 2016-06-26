@@ -6,6 +6,7 @@ Created on Sat Dec 05 10:25:12 2015
 """
 
 from Connections import Rotor, PlugBoard, Reflector
+import Constants
 
 ################################################################################
 ################################################################################
@@ -15,48 +16,7 @@ class Mechanics():
     
     # Constants and global variables
     __plugBoard = PlugBoard()
-    
-    # A, B & C reflectors
-    __reflectors = [[["A", "E"], ["B", "J"], ["C", "M"], ["D", "Z"], ["F", "L"],
-                     ["G", "Y"], ["H", "X"], ["I", "V"], ["K", "W"], ["N", "R"],
-                     ["O", "Q"], ["P", "U"], ["S", "T"]
-                     ],
-                    [["A", "Y"], ["B", "R"], ["C", "U"], ["D", "H"], ["E", "Q"],
-                     ["F", "S"], ["G", "L"], ["I", "P"], ["J", "X"], ["K", "N"],
-                     ["M", "O"], ["T", "Z"], ["V", "W"]
-                     ],
-                    [["A", "F"], ["B", "V"], ["C", "P"], ["D", "J"], ["E", "I"],
-                     ["G", "O"], ["H", "Y"], ["K", "R"], ["L", "Z"], ["M", "X"],
-                     ["N", "W"], ["T", "Q"], ["S", "U"]
-                     ]
-                    ]
-    
-    # I, II, III, IV & V rotors
-    # Map alphabet to:
-    __rotors = [["E", "K", "M", "F", "L", "G", "D", "Q", "V", "Z",
-                 "N", "T", "O", "W", "Y", "H", "X", "U", "S", "P",
-                 "A", "I", "B", "R", "C", "J"
-                 ],
-                ["A", "J", "D", "K", "S", "I", "R", "U", "X", "B",
-                 "L", "H", "W", "T", "M", "C", "Q", "G", "Z", "N",
-                 "P", "Y", "F", "V", "O", "E"
-                 ],
-                ["B", "D", "F", "H", "J", "L", "C", "P", "R", "T",
-                 "X", "V", "Z", "N", "Y", "E", "I", "W", "G", "A",
-                 "K", "M", "U", "S", "Q", "O"
-                 ],
-                ["E", "S", "O", "V", "P", "Z", "J", "A", "Y", "Q",
-                 "U", "I", "R", "H", "X", "L", "N", "F", "T", "G",
-                 "K", "D", "C", "M", "W", "B"
-                 ],
-                ["V", "Z", "B", "R", "G", "I", "T", "Y", "U", "P",
-                 "S", "D", "N", "H", "L", "X", "A", "W", "M", "J",
-                 "Q", "O", "F", "E", "C", "K"
-                 ]
-                ]
-                
-    # Knock on positions for the five rotors
-    __knockOn = ["R", "F", "W", "K", "A"]
+    __reflector = None
     
     # rotor 1, 2, 3
     __r1 = None
@@ -75,21 +35,21 @@ class Mechanics():
         
     # Create the selected reflector
     def setReflector(self, a):
-        self.__reflector = Reflector(self.__reflectors[a])
+        self.__reflector = Reflector(Constants.Connections.reflectors[a])
         
 ################################################################################
         
     # Create the rotors in place
     def setRotor(self, pos, rotorNum):
-        self.rotorSet[pos] = Rotor(self.__rotors[rotorNum], self.__knockOn[rotorNum])
+        self.rotorSet[pos] = Rotor(Constants.Connections.rotors[rotorNum], Constants.Connections.knockOn[rotorNum])
         
 ################################################################################
         
     # Create the rotors in place
     def setRotors(self, a, b, c):
-        self.__r1 = Rotor(self.__rotors[a], self.__knockOn[a])
-        self.__r2 = Rotor(self.__rotors[b], self.__knockOn[b])
-        self.__r3 = Rotor(self.__rotors[c], self.__knockOn[c])
+        self.__r1 = Rotor(Constants.Connections.rotors[a], Constants.Connections.knockOn[a])
+        self.__r2 = Rotor(Constants.Connections.rotors[b], Constants.Connections.knockOn[b])
+        self.__r3 = Rotor(Constants.Connections.rotors[c], Constants.Connections.knockOn[c])
         
 ################################################################################
     

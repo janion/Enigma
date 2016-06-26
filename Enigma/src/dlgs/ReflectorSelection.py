@@ -7,6 +7,8 @@ Created on Fri Feb 05 21:38:52 2016
 
 import wx
 
+import Constants
+
 class ReflectorDlg(wx.Dialog):
     
     result = []
@@ -22,7 +24,7 @@ class ReflectorDlg(wx.Dialog):
                       )
         
         #Create text and hour entry box
-        self.r1 = wx.Choice(self.panel, -1, choices = ["A", "B", "C"], pos=(10, 30),
+        self.r1 = wx.Choice(self.panel, -1, choices = Constants.Defaults.reflectorChoices, pos=(10, 30),
                                  size=(150, -1)
                                  )
         self.r1.SetSelection(refNum)

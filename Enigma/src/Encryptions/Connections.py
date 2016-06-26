@@ -5,6 +5,8 @@ Created on Sat Dec 05 11:02:50 2015
 @author: erik_
 """
 
+import Constants
+
 ################################################################################
 ################################################################################
 
@@ -13,11 +15,6 @@ class Rotor():
     
     # Constants and global variables
     __offset = 0
-    
-    __alpha = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
-               "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X",
-               "Y", "Z"
-               ]
                
 ################################################################################
     
@@ -37,8 +34,8 @@ class Rotor():
     # Return encrypted character with signal coming from the plugboard side
     def mapCharForward(self, charIn):
         # Maps char using the positioning relative to the machine inputs
-        charOut = self.mapping[(self.__alpha.index(charIn) + self.__offset) % 26]
-        absPos = self.__alpha[(self.__alpha.index(charOut) - self.__offset) % 26]
+        charOut = self.mapping[(Constants.alpha.index(charIn) + self.__offset) % 26]
+        absPos = Constants.alpha[(Constants.alpha.index(charOut) - self.__offset) % 26]
         return absPos
         
 ################################################################################
@@ -47,10 +44,10 @@ class Rotor():
     def mapCharBackward(self, charIn):
         # Maps char using the positioning relative to the machine inputs
         # Get the absolute character incoming
-        charIn = self.__alpha[(self.__alpha.index(charIn) + self.__offset) % 26]
+        charIn = Constants.alpha[(Constants.alpha.index(charIn) + self.__offset) % 26]
         
-        charOut = self.__alpha[self.mapping.index(charIn)]
-        absPos = self.__alpha[(self.__alpha.index(charOut) - self.__offset) % 26]
+        charOut = Constants.alpha[self.mapping.index(charIn)]
+        absPos = Constants.alpha[(Constants.alpha.index(charOut) - self.__offset) % 26]
         return absPos
         
 ################################################################################
@@ -69,7 +66,7 @@ class Rotor():
     
     # Set the mapping of the rotor
     def getCurrentChar(self):
-        return self.__alpha[self.__offset]
+        return Constants.alpha[self.__offset]
         
 ################################################################################
     
@@ -79,7 +76,7 @@ class Rotor():
         # The return is the knock on state of the turn
         if isOnward:
             self.__offset = (self.__offset + 1) % 26
-            if self.__alpha[self.__offset] == self.__knockOn:
+            if Constants.alpha[self.__offset] == self.__knockOn:
                 return True
             else:
                 return False
